@@ -34,23 +34,21 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import kotlinx.coroutines.launch
 import net.ezra.R
-import net.ezra.ui.products.AddProductScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun StartScreen(navController: NavHostController ){
+fun StartScreen(navController: NavHostController, ){
 
 
 
@@ -154,7 +152,7 @@ fun ButtonSection(pagerState: PagerState, navController: NavHostController) {
         }else{
             OutlinedButton(onClick = {
                 navController.popBackStack()
-                navController.navigate("view_prod")
+                navController.navigate("signup")
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -203,5 +201,8 @@ fun Indicator(isSelecte: Boolean) {
     }
 
 }
+//private fun onBoardingIsFinished():Boolean{
+//    val sharedPeferences = requireActivity.getSharedPreferences()
+//}
 
 

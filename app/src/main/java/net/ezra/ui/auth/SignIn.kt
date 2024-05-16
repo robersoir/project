@@ -2,12 +2,18 @@ package net.ezra.ui.auth
 
 
 
+import android.graphics.drawable.shapes.Shape
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.ShapeDefaults
+import androidx.compose.material3.Shapes
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,24 +45,26 @@ fun LoginScreen(navController: NavController, onLoginSuccess: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(if (isSystemInDarkTheme()) Color.DarkGray else Color.White),
+            .background( Color.DarkGray),
 
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
 
-        AuthHeader()
+//        AuthHeader()
         Text("Login", style = MaterialTheme.typography.h4)
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
+            leadingIcon = { Icon(imageVector = Icons.Filled.Email, contentDescription = "")},
             label = { Text("Email") },
             modifier = Modifier
                 .fillMaxWidth()
-                .background(if (isSystemInDarkTheme()) Color.White else Color.Gray),
-            colors = TextFieldDefaults.textFieldColors(  if (isSystemInDarkTheme())Color.White else Color.Gray)
+//                .background(if (isSystemInDarkTheme()) Color.White else Color.Gray),
+           , colors = TextFieldDefaults.textFieldColors(Color.Gray)
+            , shape = ShapeDefaults.Small
 
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -64,14 +72,17 @@ fun LoginScreen(navController: NavController, onLoginSuccess: () -> Unit) {
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
+            leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = "")},
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
-            colors = TextFieldDefaults.textFieldColors(  if (isSystemInDarkTheme())Color.White else Color.Gray)
-,
+            colors = TextFieldDefaults.textFieldColors( Color.Gray),
+            shape = ShapeDefaults.Small
+
+            ,
 
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(if (isSystemInDarkTheme()) Color.White else Color.Gray)
+//                        .background(if (isSystemInDarkTheme()) Color.White else Color.Gray)
 
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -104,9 +115,14 @@ fun LoginScreen(navController: NavController, onLoginSuccess: () -> Unit) {
             ) {
                 Text("Login")
             }
+            Divider(
+                color = Color.White,
+                modifier = Modifier.padding(10.dp),
+                thickness = 1.dp
+            )
 
-            Text(text = "Dont have an account",
-                color = Color.Gray)
+            Text(text = "Dont have an account?",
+                color = Color.LightGray)
 
             androidx.compose.material3.Text(
                 modifier = Modifier
@@ -118,7 +134,7 @@ fun LoginScreen(navController: NavController, onLoginSuccess: () -> Unit) {
                     },
                 text = "Register Instead",
                 textAlign = TextAlign.Center,
-                color = Color.Green
+                color = Color.Cyan
             )
 
 

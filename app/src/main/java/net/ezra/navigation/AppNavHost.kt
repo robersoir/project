@@ -1,6 +1,7 @@
 package net.ezra.navigation
 
 import androidx.activity.compose.BackHandler
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -8,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import net.ezra.ui.MainViewModel
 import net.ezra.ui.SplashScreen
 import net.ezra.ui.about.AboutScreen
 import net.ezra.ui.auth.LoginScreen
@@ -22,11 +24,14 @@ import net.ezra.ui.students.AddStudents
 import net.ezra.ui.students.Search
 import net.ezra.ui.students.Students
 
+
+
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUTE_SPLASH
+    startDestination: String,
+    mainViewModel: MainViewModel
 
 
 ) {
@@ -55,7 +60,7 @@ fun AppNavHost(
         }
 
         composable(ROUTE_SPLASH) {
-            SplashScreen(navController)
+            SplashScreen(navController , context = this@NavHost )
         }
 
         composable(ROUTE_VIEW_STUDENTS) {

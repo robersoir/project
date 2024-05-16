@@ -1,10 +1,7 @@
 package net.ezra.ui
 
 
-import android.content.res.Configuration
-import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -16,13 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.airbnb.lottie.compose.LottieAnimation
@@ -31,12 +27,10 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import kotlinx.coroutines.delay
 import net.ezra.R
-import net.ezra.navigation.ROUTE_HOME
-
 
 
 @Composable
-fun SplashScreen(navController: NavHostController) {
+fun SplashScreen(navController: NavHostController, context: NavGraphBuilder) {
 
     val alpha = remember{
         androidx.compose.animation.core.Animatable(0f)
@@ -73,7 +67,7 @@ fun SplashScreen(navController: NavHostController) {
             modifier =Modifier.alpha(alpha.value),
             fontSize=28.sp,
             fontWeight = FontWeight.Bold,
-            color = if (isSystemInDarkTheme()) Color.White else Color.White)
+            color = if (isSystemInDarkTheme()) Color.White else Color.DarkGray)
 
 
 
@@ -94,9 +88,9 @@ fun LoaderAnimation(modifier: Modifier, anim: Int) {
     )
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Preview(showBackground = true)
 @Composable
 fun HomeScreenPreviewLight() {
-    SplashScreen(rememberNavController())
+    SplashScreen(rememberNavController(), this@NavHost)
 }
 

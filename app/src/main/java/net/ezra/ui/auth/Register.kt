@@ -37,7 +37,7 @@ fun SignUpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(if (isSystemInDarkTheme())Color.DarkGray else Color.White),
+            .background(Color.DarkGray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -52,7 +52,7 @@ fun SignUpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
             onValueChange = { email = it },
             label = { Text("Email") },
             modifier = Modifier.fillMaxWidth()
-            , colors = TextFieldDefaults.textFieldColors(  if (isSystemInDarkTheme())Color.White else Color.Gray)
+            , colors = TextFieldDefaults.textFieldColors( Color.Gray)
         )
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -63,7 +63,7 @@ fun SignUpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
-                   , colors = TextFieldDefaults.textFieldColors(  if (isSystemInDarkTheme())Color.White else Color.Gray)
+                   , colors = TextFieldDefaults.textFieldColors(Color.Gray)
         )
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -73,7 +73,7 @@ fun SignUpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
             label = { Text("Confirm Password") },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
-                           , colors = TextFieldDefaults.textFieldColors(  if (isSystemInDarkTheme())Color.White else Color.Gray)
+                           , colors = TextFieldDefaults.textFieldColors( Color.Gray)
         )
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -111,8 +111,14 @@ fun SignUpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
                 Text("Sign Up")
             }
 
+            Divider(
+                color = Color.White,
+                modifier = Modifier.padding(10.dp),
+                thickness = 1.dp
+            )
+
             Text("Already have an account",
-                color = Color.Gray)
+                color = Color.LightGray)
 
             androidx.compose.material3.Text(
                 modifier = Modifier
@@ -124,7 +130,7 @@ fun SignUpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
                     },
                 text = "Login Instead",
                 textAlign = TextAlign.Center,
-                color = Color.Green
+                color = Color.Cyan
             )
 
         }
